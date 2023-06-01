@@ -4,11 +4,13 @@
  * Module dependencies.
  */
 
-var app = require("../app");
-var debug = require("debug")("expressapp:server");
-var process = require("process");
-var consola = require("consola");
-var http = require("http");
+const http = require("http");
+const app = require("../app");
+const debug = require("debug")("expressapp:server");
+const process = require("process");
+const consola = require("consola");
+const { getIP } = require("../plugins/os");
+const clc = require("cli-color");
 
 /**
  * Get port from environment and store in Express.
@@ -27,9 +29,29 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
+const ipInfo = getIP();
+
+// consola.info("ipInfo", ipInfo);
+
 server.listen(port, () => {
-	consola.success("进程启动文件所在目录", process.cwd());
-	consola.success(`service is listenning on localhost:${port}`);
+	consola.success("进程的当前工作目录:", process.cwd());
+	consola.start({
+		message: clc.greenBright(`Server is runing, You can use the followings`),
+	});
+	consola.log("Local:   " + clc.blue.underline(`http://localhost:${port}`));
+	consola.log(
+		"Network: " +
+			clc.blue.underline(
+				`http://${ipInfo["lo0"]["IPv4"] || ipInfo["lo"]["IPv4"]}:${port}`
+			)
+	);
+	consola.log({
+		message:
+			"Network: " +
+			clc.blue.underline(
+				`http://${ipInfo["en0"]["IPv4"] || ipInfo["eth0"]["IPv4"]}:${port}`
+			),
+	});
 });
 server.on("error", onError);
 server.on("listening", onListening);
