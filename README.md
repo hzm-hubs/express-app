@@ -1,2 +1,5 @@
-# 通过命令生成项目目录
-1. npx express-generator
+# 1. 使用插件
+
+- express：  node 的web框架
+- consola：  带标签的日志打印
+- cli-color：可改变日志中字符颜色
