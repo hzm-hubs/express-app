@@ -9,12 +9,19 @@ const app = require("../app");
 const debug = require("debug")("expressapp:server");
 const process = require("process");
 const consola = require("consola");
-const { getIP } = require("../plugins/os");
 const clc = require("cli-color");
+const { getIP } = require("../plugins/os");
+const { createPort } = require("../plugins/net");
 
 /**
  * Get port from environment and store in Express.
  */
+
+createPort(normalizePort(3000), (data) => {
+	consola.info("监听返回失败", data);
+});
+
+return;
 
 var port = normalizePort(process.env.PORT || "2008");
 app.set("port", port);
@@ -38,23 +45,25 @@ server.listen(port, () => {
 	consola.start({
 		message: clc.greenBright(`Server is runing, You can use the followings`),
 	});
-	consola.log("Local:   " + clc.blue.underline(`http://localhost:${port}`));
+	consola.log(
+		"Local:   " + clc.greenBright.underline(`http://localhost:${port}`)
+	);
 	consola.log(
 		"Network: " +
-			clc.blue.underline(
+			clc.greenBright.underline(
 				`http://${ipInfo["lo0"]["IPv4"] || ipInfo["lo"]["IPv4"]}:${port}`
 			)
 	);
 	consola.log({
 		message:
 			"Network: " +
-			clc.blue.underline(
+			clc.greenBright.underline(
 				`http://${ipInfo["en0"]["IPv4"] || ipInfo["eth0"]["IPv4"]}:${port}`
 			),
 	});
 });
-server.on("error", onError);
-server.on("listening", onListening);
+// server.on("error", onError);
+// server.on("listening", onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -80,34 +89,34 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
-	if (error.syscall !== "listen") {
-		throw error;
-	}
+// function onError(error) {
+// 	if (error.syscall !== "listen") {
+// 		throw error;
+// 	}
 
-	var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+// 	var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-		case "EACCES":
-			console.error(bind + " requires elevated privileges");
-			process.exit(1);
-			break;
-		case "EADDRINUSE":
-			console.error(bind + " is already in use");
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
-}
+// 	// handle specific listen errors with friendly messages
+// 	switch (error.code) {
+// 		case "EACCES":
+// 			console.error(bind + " requires elevated privileges");
+// 			process.exit(1);
+// 			break;
+// 		case "EADDRINUSE":
+// 			console.error(bind + " is already in use");
+// 			process.exit(1);
+// 			break;
+// 		default:
+// 			throw error;
+// 	}
+// }
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-	var addr = server.address();
-	var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-	debug("Listening on " + bind);
-}
+// function onListening() {
+// 	var addr = server.address();
+// 	var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+// 	debug("Listening on " + bind);
+// }
