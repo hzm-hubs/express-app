@@ -37,7 +37,7 @@ var server = http.createServer(app);
 function startListen() {
   consola.log("server start listening");
   server.listen(port, () => {
-    consola.success("进程的当前工作目录:", process.cwd());
+    consola.success("当前进程的文件目录:", process.cwd());
     consola.start({
       message: clc.greenBright(`Server is runing, You can use the followings`),
     });

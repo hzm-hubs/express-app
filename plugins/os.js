@@ -1,3 +1,4 @@
+// 操作系统
 const { networkInterfaces, cpus } = require("os");
 var consola = require("consola");
 
