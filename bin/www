@@ -35,7 +35,6 @@ var server = http.createServer(app);
  */
 
 function startListen() {
-<<<<<<< HEAD
   consola.log("server start listening");
   server.listen(port, () => {
     consola.success("当前进程的文件目录:", process.cwd());
@@ -59,34 +58,9 @@ function startListen() {
         ),
     });
   });
-=======
-	consola.log("server start listening");
-	server.listen(port, () => {
-		consola.success("进程的当前工作目录:", process.cwd());
-		consola.start({
-			message: clc.greenBright(`Server is runing, You can use the followings`),
-		});
-		consola.log(
-			"Local:   " + clc.greenBright.underline(`http://localhost:${port}`)
-		);
-		consola.log(
-			"Network: " +
-				clc.greenBright.underline(
-					`http://${ipInfo["lo0"]["IPv4"] || ipInfo["lo"]["IPv4"]}:${port}`
-				)
-		);
-		consola.log({
-			message:
-				"Network: " +
-				clc.greenBright.underline(
-					`http://${ipInfo["en0"]["IPv4"] || ipInfo["eth0"]["IPv4"]}:${port}`
-				),
-		});
-	});
->>>>>>> 63d902a04c0c59d96285032d488ebb06e31703d3
 
-	server.on("error", onError);
-	server.on("listening", onListening);
+  server.on("error", onError);
+  server.on("listening", onListening);
 }
 
 /**
@@ -94,25 +68,25 @@ function startListen() {
  */
 
 function onError(error) {
-	if (error.syscall !== "listen") {
-		throw error;
-	}
+  if (error.syscall !== "listen") {
+    throw error;
+  }
 
-	var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
 
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-		case "EACCES":
-			console.error(bind + " requires elevated privileges");
-			process.exit(1);
-			break;
-		case "EADDRINUSE":
-			console.error(bind + " is already in use");
-			process.exit(1);
-			break;
-		default:
-			throw error;
-	}
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
 }
 
 /**
@@ -120,20 +94,20 @@ function onError(error) {
  */
 
 function onListening() {
-	var addr = server.address();
-	var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-	debug("Listening on " + bind);
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
 }
 
 const Start = async () => {
-	// 异步获取端口号
-	port = await new Promise((resolve, reject) => {
-		createPort({ port, host: "0.0.0.0" }, (data) => {
-			resolve(data.port);
-		});
-	});
-	app.set("port", port);
-	startListen();
+  // 异步获取端口号
+  port = await new Promise((resolve, reject) => {
+    createPort({ port, host: "0.0.0.0" }, (data) => {
+      resolve(data.port);
+    });
+  });
+  app.set("port", port);
+  startListen();
 };
 
 Start();
