@@ -10,8 +10,8 @@ const debug = require("debug")("expressapp:server");
 const process = require("process");
 const consola = require("consola");
 const clc = require("cli-color");
-const { getIP } = require("../plugins/os");
-const { createPort } = require("../plugins/net");
+const { getIP } = require("../module/os");
+const { createPort } = require("../module/net");
 const { normalizePort } = require("../plugins/util");
 const { start } = require("repl");
 

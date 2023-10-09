@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const moduleDns = require("../plugins/dns");
+const moduleDns = require("../module/dns");
 
 /* GET home page. */
 router.get(
@@ -20,13 +20,13 @@ router.get(
 	}
 );
 
-// 注册 dns 接口
+// 注册 dns 接口 domainname 如：domainname
 router.get("/module/dns/:domainname", async (context) => {
 	// console.log("context", context.params);
 	const pageText = await moduleDns.resolveDomain(context.params.domainname);
 	// context.res.send("32");
 	context.res.render("template", {
-		pageText: JSON.stringify(pageText),
+		pageText: context.params.domainname + ": " + JSON.stringify(pageText),
 	});
 });
 
