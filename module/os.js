@@ -16,7 +16,7 @@ function getIP(typeList = ["lo0", "lo", "en0", "eth0"]) {
 			});
 			//   consola.info("results", results);
 		});
-		return results;
+		return results; 
 	} else {
 		return ipObj;
 	}
