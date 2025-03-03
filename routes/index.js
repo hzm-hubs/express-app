@@ -33,7 +33,7 @@ router.get("/module/dns/:domainname", async (context) => {
 	});
 });
 
-// 模拟 sse
+// 模拟 APPEND_CHAT sse
 router.get("/api/eventsource", (req, res) => {
 	res.setHeader("Content-Type", "text/event-stream");
 	res.setHeader("Access-Control-Allow-Origin", "*");
@@ -129,15 +129,44 @@ router.get("/api/eventsource", (req, res) => {
 			files: [],
 		},
 	];
+
 	const interval = setInterval(() => {
-		let backData = JSON.stringify({
-			content: id == -1 ? opiton : `${str[id]}`,
-			botChatId: id == -1 ? "002" : "001",
-		});
 		++id;
 		res.write(`data:${JSON.stringify(opiton[id])}\n\n`); // 最后一个必须是 \n\n 必要
 		// 停止发送示例
 		if (id >= opiton.length) {
+			clearInterval(interval);
+			res.end();
+		}
+	}, 200);
+
+	// 在客户端断开连接时清理
+	req.on("close", () => {
+		clearInterval(interval);
+	});
+});
+// 模拟 botChatId sse
+router.get("/api/eventsource2", (req, res) => {
+	res.setHeader("Content-Type", "text/event-stream");
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Cache-Control", "no-cache");
+	res.setHeader("Connection", "keep-alive");
+	let id = -1;
+	const opiton = [
+		{ botChatId: "1896479908390035458", type: "TEXT", content: "爱心" },
+		{
+			botChatId: "1896479908390035458",
+			type: "CHUNK",
+			content:
+				'[{"chatId":"1896479908390035458","docName":"副本.docx","fileFormat":"docx","knowbId":"1896469189456093185"},{"chatId":"1896479908390035458","docName":"注重家庭，注重家教，注重家风.docx","fileFormat":"docx","knowbId":"1896469189456093185"}]',
+		},
+		["DONE"],
+	];
+	const interval = setInterval(() => {
+		++id;
+		res.write(`data:${JSON.stringify(opiton[id])}\n\n`); // 最后一个必须是 \n\n 必要
+		// 停止发送示例
+		if (id >= opiton.length - 1) {
 			clearInterval(interval);
 			res.end();
 		}
