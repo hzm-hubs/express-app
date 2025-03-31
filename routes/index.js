@@ -180,7 +180,40 @@ router.get("/api/eventsource", (req, res) => {
 		clearInterval(interval);
 	});
 });
+
 // 模拟 botChatId sse
+router.get("/api/eventsource3", (req, res) => {
+	res.setHeader("Content-Type", "text/event-stream");
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Cache-Control", "no-cache");
+	res.setHeader("Connection", "keep-alive");
+	let id = -1;
+	const opiton = [
+		{ type: "TEXT", content: "爱" },
+		{ type: "TEXT", content: "心" },
+		{ type: "TEXT", content: "啊" },
+		{ type: "TEXT", content: "," },
+		{ type: "TEXT", content: "可以" },
+		{ type: "TEXT", content: "不可以" },
+		{ type: "TEXT", content: "就这样" },
+		{ type: "TEXT", content: "吧！" },
+		["DONE"],
+	];
+	const interval = setInterval(() => {
+		++id;
+		res.write(`data:${JSON.stringify(opiton[id])}\n\n`); // 最后一个必须是 \n\n 必要
+		// 停止发送示例
+		if (id >= opiton.length - 1) {
+			clearInterval(interval);
+			res.end();
+		}
+	}, 200);
+
+	// 在客户端断开连接时清理
+	req.on("close", () => {
+		clearInterval(interval);
+	});
+});
 router.get("/api/eventsource2", (req, res) => {
 	res.setHeader("Content-Type", "text/event-stream");
 	res.setHeader("Access-Control-Allow-Origin", "*");
