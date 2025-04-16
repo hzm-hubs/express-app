@@ -64,7 +64,7 @@ router.get("/api/eventsource", (req, res) => {
 		// 		'APPEND_CHAT{"code":200,"msg":null,"data":{"type":"GENERATE_ACTIVITY_BUTTON","content":"确认生成活动"},"success":true}',
 		// },
 		// {
-		// // 模版选择
+		// 	// // 模版选择
 		// 	event: "message",
 		// 	conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
 		// 	message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
@@ -74,17 +74,17 @@ router.get("/api/eventsource", (req, res) => {
 		// 	answer:
 		// 		'APPEND_CHAT{"code":200,"msg":null,"data":{"type":"TEMPLATE_RECOMMEND","list":[{"id":"1","name":"超级云玩家","templateClass":"业务办理","firstTitleMaxWordCount":"5","secondTitleMaxWordCount":"9","thirdTitleMaxWordCount":"0","description":"支持设置用户领取多种活动奖品","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/1.png"},{"id":"3","name":"幸运赢好礼","templateClass":"砸金蛋抽奖","firstTitleMaxWordCount":"5","secondTitleMaxWordCount":"5","thirdTitleMaxWordCount":"0","description":"支持用户砸金蛋抽奖","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png"}]},"success":true}',
 		// },
-		// {
-		// 	// 产品选择
-		// 	event: "message",
-		// 	conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
-		// 	message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
-		// 	created_at: 1739945501,
-		// 	task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
-		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
-		// 	answer:
-		// 		'APPEND_CHAT{"code": 200, "success": true, "data": {"type": "PRODUCT_RECOMMEND", "maxCount": 4,"minCount": 1,"checkType": "checkBox", "list": [{"id": "1", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/1.jpg", "name": "直连卫星10元/月","checked": true}, {"id": "2", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/2.png", "name": "3元放心用流量包"}, {"id": "3", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/3.png", "name": "1分钱爱奇艺","checked": true}, {"id": "4", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/4.jpg", "name": "[北京]流量1天包 3元1GB"}, {"id": "7", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/7.png", "name": "樊登讲书14天VIP体验卡"}, {"id": "8", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/8.png", "name": "美团66元券包"}, {"id": "5", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/5.png", "name": "谢谢参与"}, {"id": "6", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/6.png", "name": "麦当劳优惠券5折起","description":"为您推荐模板，您可直接选择满意的模板为您推荐模板，您可直接选择满意的模板"}]}, "msg": "操作成功"}',
-		// },
+		{
+			// 产品选择
+			event: "message",
+			conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
+			message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+			created_at: 1739945501,
+			task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
+			id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+			answer:
+				'APPEND_CHAT{"code": 200, "success": true, "data": {"type": "PRODUCT_RECOMMEND", "maxCount": 4,"minCount": 1,"checkType": "checkBox", "list": [{"id": "1", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/1.jpg", "name": "直连卫星10元/月","checked": true}, {"id": "2", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/2.png", "name": "3元放心用流量包"}, {"id": "3", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/3.png", "name": "1分钱爱奇艺","checked": true}, {"id": "4", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/4.jpg", "name": "[北京]流量1天包 3元1GB"}, {"id": "7", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/7.png", "name": "樊登讲书14天VIP体验卡"}, {"id": "8", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/8.png", "name": "美团66元券包"}, {"id": "5", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/5.png", "name": "谢谢参与"}, {"id": "6", "imageUrl": "https://activitygenerate.oss-rg-china-mainland.aliyuncs.com/%E9%A9%BB%E5%9C%BA/%E5%A5%96%E5%93%81/6.png", "name": "麦当劳优惠券5折起","description":"为您推荐模板，您可直接选择满意的模板为您推荐模板，您可直接选择满意的模板"}]}, "msg": "操作成功"}',
+		},
 		// {
 		// 	// 调试参数展示
 		// 	event: "message",
@@ -95,6 +95,18 @@ router.get("/api/eventsource", (req, res) => {
 		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
 		// 	answer:
 		// 		'APPEND_CHAT{"code":200, "msg":null,"data":{ "type":"DEBUG_ANSWER","debugContent":"调试信息为:活动参数如下:活动模板ID:35 活动开始时间:活动结束时间:活动区域省:市:活动用户群体:活动奖品:活动名称:","content":"正式内容为;请说明活动结束时间。(活动开始时间默认为当前时间，如有需要清说明活动开始时间)"},"success":true}',
+		// 	from_variable_selector: ["17349452868440", "answer"],
+		// },
+		// 活动推荐展示
+		// {
+		// 	event: "message",
+		// 	conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
+		// 	message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	created_at: 1739945501,
+		// 	task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
+		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	answer:
+		// 		'APPEND_CHAT{"code":200,"msg":null,"data":{"type":"ACTIVITY_RECOMMEND","list":[{"id":"4","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/4.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=285&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"拓展客户群体","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销","activityName":"哈哈哈哈哈哈哈","tagList":["124324324","哈哈哈哈哈哈哈哈"]},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销","tagList":["124324324","哈哈哈哈哈哈哈哈"]}]},"success":true}',
 		// 	from_variable_selector: ["17349452868440", "answer"],
 		// },
 		// {
@@ -181,22 +193,20 @@ router.get("/api/eventsource", (req, res) => {
 	});
 });
 
-// 模拟 botChatId sse
-router.get("/api/eventsource3", (req, res) => {
+router.get("/api/eventsource2", (req, res) => {
 	res.setHeader("Content-Type", "text/event-stream");
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Cache-Control", "no-cache");
 	res.setHeader("Connection", "keep-alive");
 	let id = -1;
 	const opiton = [
-		{ type: "TEXT", content: "爱" },
-		{ type: "TEXT", content: "心" },
-		{ type: "TEXT", content: "啊" },
-		{ type: "TEXT", content: "," },
-		{ type: "TEXT", content: "可以" },
-		{ type: "TEXT", content: "不可以" },
-		{ type: "TEXT", content: "就这样" },
-		{ type: "TEXT", content: "吧！" },
+		{ botChatId: "1896479908390035458", type: "TEXT", content: "爱心" },
+		{
+			botChatId: "1896479908390035458",
+			type: "CHUNK",
+			content:
+				'[{"chatId":"1896479908390035458","docName":"副本.docx","fileFormat":"docx","knowbId":"1896469189456093185"},{"chatId":"1896479908390035458","docName":"注重家庭，注重家教，注重家风.docx","fileFormat":"docx","knowbId":"1896469189456093185"}]',
+		},
 		["DONE"],
 	];
 	const interval = setInterval(() => {
@@ -214,20 +224,23 @@ router.get("/api/eventsource3", (req, res) => {
 		clearInterval(interval);
 	});
 });
-router.get("/api/eventsource2", (req, res) => {
+
+// 模拟 botChatId sse
+router.get("/api/eventsource3", (req, res) => {
 	res.setHeader("Content-Type", "text/event-stream");
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Cache-Control", "no-cache");
 	res.setHeader("Connection", "keep-alive");
 	let id = -1;
 	const opiton = [
-		{ botChatId: "1896479908390035458", type: "TEXT", content: "爱心" },
-		{
-			botChatId: "1896479908390035458",
-			type: "CHUNK",
-			content:
-				'[{"chatId":"1896479908390035458","docName":"副本.docx","fileFormat":"docx","knowbId":"1896469189456093185"},{"chatId":"1896479908390035458","docName":"注重家庭，注重家教，注重家风.docx","fileFormat":"docx","knowbId":"1896469189456093185"}]',
-		},
+		{ type: "TEXT", content: "爱" },
+		{ type: "TEXT", content: "心" },
+		{ type: "TEXT", content: "啊" },
+		{ type: "TEXT", content: "," },
+		{ type: "TEXT", content: "可以" },
+		{ type: "TEXT", content: "不可以" },
+		{ type: "TEXT", content: "就这样" },
+		{ type: "TEXT", content: "吧！" },
 		["DONE"],
 	];
 	const interval = setInterval(() => {
