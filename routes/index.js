@@ -42,6 +42,7 @@ router.get("/api/eventsource", (req, res) => {
 	let id = -1;
 	// let str = "豫章故郡，洪都新府。";
 	const str = "豫章故郡，洪都新府。";
+	// 识别符号APPEND_CHAT前后不能有空格、换行符号
 	const opiton = [
 		{
 			event: "message",
@@ -106,7 +107,7 @@ router.get("/api/eventsource", (req, res) => {
 		// 	task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
 		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
 		// 	answer:
-		// 		'APPEND_CHAT{"code":200,"msg":null,"data":{"type":"ACTIVITY_RECOMMEND","list":[{"id":"4","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/4.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=285&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"拓展客户群体","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销","activityName":"哈哈哈哈哈哈哈","tagList":["124324324","哈哈哈哈哈哈哈哈"]},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销"},{"id":"3","imageUrl":"https://activity-generate.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/3.png","activityUrl":"http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=aaa&source=1&caseid=286&routeType=2&fromSys=4A","tgxs":"在线广告","hdmb":"增强客户忠诚度","jzqd":"直销","tagList":["124324324","哈哈哈哈哈哈哈哈"]}]},"success":true}',
+		// 		'👉{"text": "活动策划建议：针对现有用户，通过官网和门店宣传，结合短信营销，在半年内推广新产品。利用线上APP和自营商铺进行互动，每月发送优惠券，增强客户忠诚度，吸引更多用户参与。"}点击“确定生成活动策划方案”查看详情哟~APPEND_CHAT{"code":200,"msg":null,"data":{"type":"GENERATE_ACTIVITY_BUTTON","content":"确认生成活动策划方案"},"success":true}APPEND_CHAT{"code": 200, "msg": null, "data": {"type": "ACTIVITY_RECOMMEND", "content": "根据上述活动策划建议，为您推荐以下活动案例，可点击查看详情一键复制~", "list": [{"id": "1409296334225408", "imageUrl": "https://activity-generate-yj.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/1409296334225408.png", "activityUrl": "http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=1234&source=1&caseid=1008&routeType=2&fromSys=4A", "activityName": "翼起618", "tagList": ["手机直连卫星", "增加销售额", "战新"]}, {"id": "30", "imageUrl": "https://activity-generate-yj.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/30.png", "activityUrl": "http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=1234&source=1&caseid=1019&routeType=2&fromSys=4A", "activityName": "幸运赢好礼", "tagList": ["定向流量包", "流量包", "推广新产品和服务"]}, {"id": "34", "imageUrl": "https://activity-generate-yj.oss-cn-beijing.aliyuncs.com/%E6%A8%A1%E6%9D%BF/34.png", "activityUrl": "http://172.16.50.126:30952/anlikuHtml/caselibrary.html#/caseIndexSSO?token=1234&source=1&caseid=1085&routeType=2&fromSys=4A", "activityName": "数字年货节", "tagList": ["流量包", "推广新产品和服务", "权益包"]}]}, "success": true}',
 		// 	from_variable_selector: ["17349452868440", "answer"],
 		// },
 		// {
@@ -119,6 +120,30 @@ router.get("/api/eventsource", (req, res) => {
 		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
 		// 	answer:
 		// 		'APPEND_CHAT{"code":200, "msg":null,"data":{ "type":"QUESTIONNAIRE_RECOMMEND","content":"编辑问卷调查", "questionnaireList":[{"question":"123","type":"单选","optionList":"1，2，3","required":true}]},"success":true}',
+		// 	from_variable_selector: ["17349452868440", "answer"],
+		// },
+		// {
+		// 	// 预览活动图
+		// 	event: "message",
+		// 	conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
+		// 	message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	created_at: 1739945501,
+		// 	task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
+		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	answer:
+		// 		'APPEND_CHAT{"code": 200, "msg": null, "data": {"type": "GENERATE_ACTIVITY", "data": {"msg": "\u64cd\u4f5c\u6210\u529f", "traceId": "521f4806d8ff4c038eabe79aadacec39", "data": {"id": 1739945702506, "previewH5Url": "https://yxai.zsc.189.cn/bloc-uni/pages/card/general?actNo=IACT2025021903509&temp=luckyflop&pcode=bj&state=draft"}, "detectMsg": null, "type": "GENERATE_ACTIVITY", "url": null, "status": 200}}, "success": true}',
+		// 	from_variable_selector: ["17349452868440", "answer"],
+		// },
+		// {
+		// 	// 预览活动图
+		// 	event: "message",
+		// 	conversation_id: "28540cfa-6788-4523-9794-b5dc1c550026",
+		// 	message_id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	created_at: 1739945501,
+		// 	task_id: "752ecc2a-e030-48c6-814c-34b04b6d6b4f",
+		// 	id: "97a66c1e-609a-443c-b58b-230ddfad394b",
+		// 	answer:
+		// 		'APPEND_CHAT{"code": 200, "msg": null, "data": {"type": "GENERATE_ACTIVITY", "content":"点击预览活动图","data": {"msg": "\u64cd\u4f5c\u6210\u529f", "traceId": "521f4806d8ff4c038eabe79aadacec39", "data": {"id": 1739945702506, "previewH5Url": "https://yxai.zsc.189.cn/bloc-uni/pages/card/general?actNo=IACT2025021903509&temp=luckyflop&pcode=bj&state=draft","editUrl":"1739945702506"}, "detectMsg": null, "type": "GENERATE_ACTIVITY", "url": null, "status": 200}}, "success": true}',
 		// 	from_variable_selector: ["17349452868440", "answer"],
 		// },
 		{
